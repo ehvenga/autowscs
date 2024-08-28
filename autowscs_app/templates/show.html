@@ -1,0 +1,493 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Select | WebXsmart</title>
+    {% load static %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+    <!-- Google Fonts
+		============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+    <!-- Bootstrap CSS
+		============================================ -->
+   
+    <!-- Bootstrap CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <!-- owl.carousel CSS
+		============================================ -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Select | WebXsmart</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- favicon
+            ============================================ -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
+        <!-- Google Fonts
+            ============================================ -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+        <!-- Bootstrap CSS
+            ============================================ -->
+      
+        <!-- style CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{% static 'style.css' %}" />
+        <!-- responsive CSS
+            ============================================ -->
+       
+        <!-- duallistbox CSS
+            ============================================ -->
+        <link rel="stylesheet" href="{% static 'css/duallistbox/bootstrap-duallistbox.min.css' %}">
+        <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            .node {}
+
+            .link {
+                stroke: #999;
+                stroke-opacity: .6;
+                stroke-width: 1px;
+            }
+        </style>
+        <style type="text/css">
+  .container1 { margin: 150px auto; max-width: 960px; }
+  .window {
+            font-weight: bold;
+            cursor: pointer;
+            border:1px solid #346789;
+            box-shadow: 2px 2px 10px #aaa;
+            -o-box-shadow: 2px 2px 10px #aaa;
+            -webkit-box-shadow: 2px 2px 10px #aaa;
+            -moz-box-shadow: 2px 2px 10px #aaa;
+            -moz-border-radius:0.5em;
+            border-radius:0.5em;
+            /*
+            opacity:0.8;
+            filter:alpha(opacity=80);
+            */
+            width: 10em; height: auto;
+            padding: 0.5em 0em;
+            text-align:center;
+            z-index:20; position:absolute;
+            background-color:#eeeeef;
+            color:black;
+            font-family:helvetica;
+            font-size:0.9em;
+            word-wrap:break-word;
+        }
+
+        .window:hover {
+            box-shadow: 2px 2px 10px #444;
+            -o-box-shadow: 2px 2px 10px #444;
+            -webkit-box-shadow: 2px 2px 10px #444;
+            -moz-box-shadow: 2px 2px 10px #444;
+            /*
+            opacity:0.6;
+            filter:alpha(opacity=60);
+            */
+        }
+
+        /*
+        .window > div {
+            margin-top: 19%;
+            margin-bottom: 19%;
+        }
+        */
+
+        .hidden {
+            display: none;
+        }
+
+        .collapser {
+            cursor: pointer;
+            border:1px dotted gray;
+            z-index:21;
+        }
+
+        .errorWindow {
+            border: 2px solid red;
+        }
+
+        #treemain {
+            height: 500px;
+            width: 100%;
+            position: relative;
+            overflow: auto;
+        }
+
+    </style>
+      
+      <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
+    </head>
+
+<body>
+
+    <!-- End Left menu area -->
+    <!-- Start Welcome area -->
+    <div class="all-content-wrapper">
+        <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                
+            </div>
+        </div>
+    </div> -->
+        <div class="header-advance-area">
+            <div class="header-top-area">
+                <div class="container">
+                    <!-- <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> -->
+                    <div class="header-top-wraper">
+                        <!-- <div class="row"> -->
+                        <!-- <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
+                                    <div class="menu-switcher-pro">
+                                        <button type="button" id="sidebarCollapse"
+                                                class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                            <i class="educate-icon educate-nav"></i>
+                                        </button>
+                                    </div>
+                                </div> -->
+                        <!-- <div class="col-lg-12 col-md-7 col-sm-6 col-xs-12 "> --> 
+                                <div class="header-top-menu ">
+                                    <div class="logo-pro">
+                                        <a href="/"><img class="main-logo" src="{% static 'img/logo/logo.png' %}"
+                                                alt="" /></a>
+                                    </div>
+                                    <div class="header-top-menu1">
+                                        <ul class="nav navbar-nav mai-top-nav">
+                                            <li class="nav-item"><a href="/" class="nav-link">Database</a>
+                                            </li>
+                                            <li class="nav-item"><a href="/upload_datafile" class="nav-link">Semantic Web Service Composition</a>
+                                            </li>
+                                            {% comment %} <li class="nav-item"><a href="" class="nav-link">Database</a>
+                                            </li>
+                                            <li class="nav-item"><a href="" class="nav-link">Popular WS</a>
+                                            </li>
+                                            <li class="nav-item"><a href="" class="nav-link">Popular Goals</a>
+                                            </li>
+                                            <li class="nav-item"><a href="" class="nav-link">Association Rules</a>
+                                            </li> {% endcomment %}
+                                        </ul>
+                                    </div>
+                                </div>
+                        
+                    </div>
+                  
+                </div>
+            </div>
+            <!-- Mobile Menu start -->
+            <!-- <div class="mobile-menu-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="mobile-menu">
+                                <nav id="dropdown">
+                                    <ul class="mobile-menu-nav">
+                                        <li><a data-toggle="collapse" data-target="#Charts" href="#">Web Service
+                                                <span class="admin-project-icon edu-icon edu-down-arrow"></span></a>
+                                            <ul class="collapse dropdown-header-top">
+                                                <li><a href=""><span class="mini-sub-pro">WebService</span></a>
+                                                </li>
+                                                {% comment %} <li><a href=""><span class="mini-sub-pro">Database</span></a>
+                                                </li>
+                                                <li><a href=""><span class="mini-sub-pro">Popular WS</span></a>
+                                                </li>
+                                                <li><a href=""><span class="mini-sub-pro">Popular Goals</span></a>
+                                                </li>
+                                                <li><a href=""><span class="mini-sub-pro">Association Rules</span></a>
+                                                </li> {% endcomment %}
+                                            </ul>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- Mobile Menu end -->
+
+        </div>
+      
+
+        <!-- <div class="footer-copyright-area">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copy-right">
+                            <p>Copyright © 2023. All rights reserved. WebXsmart</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+ 
+
+    <div class="container1">
+        
+  
+        <div id="treemain">
+    
+            <div id="node_0" class="window hidden"
+                 data-id="0"
+                 data-parent=""
+                 data-first-child="1"
+                 data-next-sibling="">
+                WSC Results
+            </div>
+    
+            <div id="node_1" class="window hidden"
+                 data-id="1"
+                 data-parent="0"
+                 data-first-child="4"
+                 data-next-sibling="2">
+                Stage 1
+            </div>
+    
+            <div id="node_2" class="window hidden"
+                 data-id="2"
+                 data-parent="0"
+                 data-first-child="6"
+                 data-next-sibling="3">
+                Stage 2
+            </div>
+    
+            <div id="node_3" class="window hidden"
+                 data-id="3"
+                 data-parent="0"
+                 data-first-child="8"
+                 data-next-sibling="10">
+                Stage 2
+            </div>
+
+            <div id="node_10" class="window hidden"
+                 data-id="10"
+                 data-parent="0"
+                 data-first-child="11"
+                 data-next-sibling="">
+                Stage 3
+            </div>
+    
+    
+            <div id="node_4" class="window hidden"
+                 data-id="4"
+                 data-parent="1"
+                 data-first-child=""
+                 data-next-sibling="5">
+                WS1
+            </div>
+    
+            <div id="node_5" class="window hidden"
+                 data-id="5"
+                 data-parent="1"
+                 data-first-child=""
+                 data-next-sibling="">
+                 getVacationLocation
+            </div>
+    
+            <div id="node_6" class="window hidden"
+                 data-id="6"
+                 data-parent="2"
+                 data-first-child=""
+                 data-next-sibling="7">
+                WS2
+            </div>
+    
+            <div id="node_7" class="window hidden"
+                 data-id="7"
+                 data-parent="2"
+                 data-first-child=""
+                 data-next-sibling="">
+                 getAirlineTicket
+            </div>
+    
+            <div id="node_8" class="window hidden"
+                 data-id="8"
+                 data-parent="3"
+                 data-first-child=""
+                 data-next-sibling="9">
+                WS3
+            </div>
+    
+            <div id="node_9" class="window hidden"
+                 data-id="9"
+                 data-parent="3"
+                 data-first-child=""
+                 data-next-sibling="">
+                 getHotel
+            </div>
+
+            <div id="node_11" class="window hidden"
+                 data-id="11"
+                 data-parent="10"
+                 data-first-child=""
+                 data-next-sibling="12">
+                 WS4
+            </div>
+
+            <div id="node_12" class="window hidden"
+                 data-id="12"
+                 data-parent="10"
+                 data-first-child=""
+                 data-next-sibling="">
+                 getLocalTransport
+            </div>
+    
+    
+    
+        </div>
+    </div>
+    <div class="footer-copyright-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright © 2023. All rights reserved. WebXsmart</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery
+    ============================================ -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- bootstrap JS
+    ============================================ -->
+  
+    <!-- main JS
+    ============================================ -->
+    
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsPlumb/1.7.10/jsPlumb.min.js" integrity="sha512-A1gTsaWUck7mkEu6D8/938PKlkVS79TkgqAloQbGU4bhOPUBS9JVknN5x++J3eRNO8g6D/T3kqhHBd4KkqRNxg==" crossorigin="anonymous"></script>
+     <!-- <script type="text/javascript" src="../jsplumb-tree.js"></script> -->
+     <script type="text/javascript" src="{% static 'js/jsplumb-tree.js' %}"></script>
+ 
+     <script type="text/javascript">
+         // -- init -- //
+         jsPlumb.ready(function() {
+ 
+             // connection lines style
+             var connectorPaintStyle = {
+                 lineWidth:3,
+                 strokeStyle:"#4F81BE",
+                 joinstyle:"round"
+             };
+ 
+             var pdef = {
+                 // disable dragging
+                 DragOptions: null,
+                 // the tree container
+                 Container : "treemain"
+             };
+             var plumb = jsPlumb.getInstance(pdef);
+ 
+             // all sizes are in pixels
+             var opts = {
+                 prefix: 'node_',
+                 // left margin of the root node
+                 baseLeft: 24,
+                 // top margin of the root node
+                 baseTop: 24,
+                 // node width
+                 nodeWidth: 100,
+                 // horizontal margin between nodes
+                 hSpace: 36,
+                 // vertical margin between nodes
+                 vSpace: 10,
+                 imgPlus: '{% static "img/tree_expand.png" %}',
+                 imgMinus: '{% static "img/tree_collapse.png" %}',
+                 // queste non sono tutte in pixel
+                 sourceAnchor: [ 1, 0.5, 1, 0, 10, 0 ],
+                 targetAnchor: "LeftMiddle",
+                 sourceEndpoint: {
+                     endpoint:["Image", {url: '{% static "img/tree_collapse.png" %}'}],
+                     cssClass:"collapser",
+                     isSource:true,
+                     connector:[ "Flowchart", { stub:[40, 60], gap:[10, 0], cornerRadius:5, alwaysRespectStubs:false } ],
+                     connectorStyle:connectorPaintStyle,
+                     enabled: false,
+                     maxConnections:-1,
+                     dragOptions:null
+                 },
+                 targetEndpoint: {
+                     endpoint:"Blank",
+                     maxConnections:-1,
+                     dropOptions:null,
+                     enabled: false,
+                     isTarget:true
+                 },
+                 connectFunc: function(tree, node) {
+                     var cid = node.data('id');
+                     console.log('Connecting node ' + cid);
+                 }
+             };
+             var tree = jQuery.jsPlumbTree(plumb, opts);
+             tree.init();
+             window.treemain = tree;
+         });
+ 
+         function positioningBlockBug() {
+             var oldNode = window.treemain.nodeById(2);
+             //var newNode = $('#node_2_new');
+             var newNode = $('    <div id="node_2" class="window hidden"\n' +
+                 '         data-id="2"\n' +
+                 '         data-parent="0"\n' +
+                 '         data-first-child="6"\n' +
+                 '         data-next-sibling="3">\n' +
+                 '        Node 2 NEW\n' +
+                 '    </div>\n');
+             if (oldNode) {
+                 // butta il nodo nel container
+                 oldNode.replaceWith(newNode);
+                 // rimostra il nodo
+                 newNode.id = 'node_2';
+                 newNode.show();
+                 // aggiorna l'albero
+                 window.treemain.update();
+             }
+ 
+         }
+ 
+     </script>
+ <script>
+ try {
+   fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+     return true;
+   }).catch(function(e) {
+     var carbonScript = document.createElement("script");
+     carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+     carbonScript.id = "_carbonads_js";
+     document.getElementById("carbon-block").appendChild(carbonScript);
+   });
+ } catch (error) {
+   console.log(error);
+ }
+ </script>
+ <script type="text/javascript">
+ 
+   var _gaq = _gaq || [];
+   _gaq.push(['_setAccount', 'UA-36251023-1']);
+   _gaq.push(['_setDomainName', 'jqueryscript.net']);
+   _gaq.push(['_trackPageview']);
+ 
+   (function() {
+     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+   })();
+ 
+ </script>
+</body>
+
+</html>

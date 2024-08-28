@@ -1,0 +1,97 @@
+{% extends ".\base.html" %}
+{% block content %}
+<style>
+    .orgchart .node{
+        width: auto !important;
+    }
+    .orgchart .node .title{
+        border-radius: 20px !important;
+        padding: 10px;
+        height:40px !important;
+    }
+    .orgchart{
+        background: #ffffff;
+        background-image: unset !important;
+    }
+    .node .content{
+        display:none;
+    }
+    #chart-container{
+        display: flex;
+        justify-content: center;
+    }
+    .graphical-view .symbol{
+        opacity:0;
+         display: none;
+    }
+    .graphical-view{
+        width: 100%;
+        height: 100%;
+        padding-top: 70px;
+        background: #ffffff;
+    }
+    .orgchart .node .title{
+        background: #ffffff !important;
+        border: 2px solid #156295;
+        color: #156295 !important;
+        line-height: initial !important;
+    }
+    .orgchart .lines .downLine{
+        background: #156295 !important;
+    }
+    .orgchart .lines .leftLine,
+    .orgchart .lines .rightLine,
+    .orgchart .node .content{
+        border-color:#156295 !important;
+    }
+    .orgchart .lines .downLine{
+
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.3/css/jquery.orgchart.min.css'>
+<div class="graphical-view">
+    <!-- partial:index.partial.html -->
+<div id="chart-container"></div>
+
+<!-- partial -->
+
+
+</div>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/orgchart/2.1.3/js/jquery.orgchart.min.js'></script>
+<script>
+        
+  (function($){
+      let Data = [];
+      $.ajax({
+          url: '/parameterhierarchy',
+          method: 'GET',
+          dataType: 'json',
+          success: function(data) {
+              Data.push(data);
+          },
+          error: function(error) {
+            console.error('Error fetching data:', error);
+          }
+        });
+  
+    $(function() {
+       var datascourc = {
+          'name': 'Hierarchy Chart',
+          'title': 'general manager',
+          'children': Data[0]
+      }; 
+      var oc = $('#chart-container').orgchart({
+        'data' : datascourc,
+        'nodeContent': 'title',
+        'pan': false,
+        
+        'zoom': false
+      });
+  
+    });
+  
+  })(jQuery);
+  </script>
+{% endblock content %}

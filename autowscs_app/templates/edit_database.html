@@ -1,0 +1,618 @@
+{% extends ".\base.html" %}
+{% block content %}
+<!-- Multi Upload Start-->
+<link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="multi-uploaded-area mg-b-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="alert-title dropzone-custom-sys">
+                    <h2>WebXsmart</h2>
+                    <p>{{ display_message }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Multi Upload End-->
+<!-- Hi-chart list Start -->
+<!-- Single pro tab review Start-->
+<div class="single-pro-review-area mt-t-30 mg-b-15">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-payment-inner-st">
+                    <!-- <ul id="myTabedu1" class="tab-review-design">
+                        <li class="active"><a href="#web_service"> Web Service </a></li>
+                        <li><a href="#parameter"> Parameter </a></li>
+                        <li><a href="#input_parameter"> Input Parameter </a></li>
+                        <li><a href="#out_parameter"> Out Parameter </a></li>
+                    </ul> -->
+
+
+                    <ul id="myTabedu1" class="nav-tabs-custom nav nav-tabs tab-review-design">
+                        <li class="nav-item active"><a href="#web_service" class="active nav-link"><span
+                                    class="d-none d-sm-block">Web Services</span></a></li>
+                        <li class="nav-item"><a href="#parameter" class="nav-link"><span
+                                    class="d-none d-sm-block">Parameter</span></a></li>
+                        <li class="nav-item"><a href="#input_parameter" class="nav-link"><span
+                                    class="d-none d-sm-block"> Input Parameter</span></a></li>
+                        <li class="nav-item"><a href="#out_parameter" class="nav-link"><span
+                                    class="d-none d-sm-block">Output Parameter</span></a></li>
+                        <li class="nav-item"><a href="#hierarchy" class="nav-link"><span  class="d-none d-sm-block">Hierarchy</span></a></li>
+                    </ul>
+
+                    <div id="myTabContent" class="tab-content custom-product-edit">
+                        <div class="product-tab-list tab-pane fade active in" id="web_service">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            <form action="{% url 'add_webservice' %}" method="POST" id="demo1-upload">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                                        <div class="form-group">
+                                                            <label for="fname">WebService ID</label>
+                                                            <input name="webserviceid" type="text" class="form-control"
+                                                                placeholder="WebService ID" />
+
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fname">Webservice Name</label>
+                                                            <input name="webservicename" type="text"
+                                                                class="form-control" placeholder="Webservice Name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fname">Reputation</label>
+                                                            <input name="reputation" type="number" class="form-control"
+                                                                placeholder="Reputation">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fname">Price</label>
+                                                            <input name="price" type="number" class="form-control"
+                                                                placeholder="Price">
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <label for="fname">Webservice Duration</label>
+                                                            <input name="duration" type="number" class="form-control"
+                                                                placeholder="Webservice Duration">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fname">Provider</label>
+                                                            <input name="provider" type="text" class="form-control"
+                                                                placeholder="Provider">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="fname">Webservice URL</label>
+                                                            <input name="webservice_url" type="text"
+                                                                class="form-control" placeholder="Webservice URL">
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class=container>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary waves-effect waves-light">
+                                                                        Add WebService
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="payment-add">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                                                <form>
+                                                                    <div class="form-group">
+
+                                                                        <label for="fname">Webservice</label>
+                                                                        <form action="{% url 'delete_webservice' %}"
+                                                                            method="POST">
+                                                                            {% csrf_token %}
+                                                                            <div class="form-group">
+                                                                                <select name="webservice_delete"
+                                                                                    class="form-control"
+                                                                                    name="del_course_id"
+                                                                                    id="del_course_id">
+
+                                                                                    {% for webservice in webservicelist %}
+                                                                                    <option
+                                                                                        value="{{ webservice.webserviceid }}">
+                                                                                        {{ webservice.name }}</option>
+                                                                                    {% endfor %}
+                                                                                </select>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="form-buttons-main">
+                                                                    <div class="payment-adress">
+                                                                        <button type="submit"
+                                                                            class="btn btn-primary waves-effect waves-light wave-11">
+                                                                            Delete Webservice
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-main">
+                                        <table id="web_service_table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th class="th">WebServiceID</th>
+                                                  <th class="th">WebService Name</th>
+                                                  <th>Reputation</th>
+                                                  <th>Price</th>
+                                                  <th>Duration</th>
+                                                  <th>Provider</th>
+                                                  <th>Url</th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                {% for WS in webservicelist %}
+                                                <tr>
+                                                  <td>{{WS.webserviceid}}</td>
+                                                  <td>{{WS.name}}</td>
+                                                  <td>{{WS.reputation}}</td>
+                                                  <td>{{WS.price}}</td>
+                                                  <td>{{WS.duration}}</td>
+                                                  <td>{{WS.provider}}</td>
+                                                  <td>{{WS.url}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="parameter">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            <form action="{% url 'add_parameter' %}" method="POST" id="demo1-upload">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label for="fname">Parameter ID</label>
+                                                            <input name="parameterid" type="text" class="form-control"
+                                                                placeholder="Parameter ID">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <label for="fname">Parameter Name</label>
+                                                            <input name="parameter_name" type="text"
+                                                                class="form-control" placeholder="Parameter Name">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress ">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Add Parameter
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                            <form action="{% url 'delete_parameter' %}" method="POST">
+                                                                {% csrf_token %}
+                                                                <div class="form-group">
+                                                                    <label for="fname">Parameter</label>
+                                                                    <select name="parameter_delete" class="form-control"
+                                                                        name="del_course_id" id="del_knowledge_id">
+                                                                        {% for parameter in parameterlist %}
+                                                                        <option value="{{ parameter.parameterid }}">{{parameter.name }}</option>
+                                                                        {% endfor %}
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="payment-adress">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary waves-effect waves-light">
+                                                                    Delete Parameter
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-main">
+                                        <table id="parameter_table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th class="th">Parameter ID</th>
+                                                  <th class="th">Parameter Name</th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                {% for parameter in parameterlist %}
+                                                <tr>
+                                                  <td>{{parameter.parameterid}}</td>
+                                                  <td>{{parameter.name}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="input_parameter">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            <form action="{% url 'add_inputparameter' %}" method="POST"
+                                                id="demo1-upload">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <h3 style="font-size:18px;">Webservice</h3>
+                                                            <select name="webserviceid" class="form-control"
+                                                                name="del_course_id" id="del_knowledge_id">
+
+                                                                {% for webservice in webservicelist %}
+                                                                <option value="{{ webservice.webserviceid }}">{{ webservice.webserviceid }} - {{ webservice.name }}
+                                                                </option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <h3 style="font-size:18px;">Parameter</h3>
+                                                            <select name="parameterid" class="form-control"
+                                                                name="del_course_id" id="del_knowledge_id">
+
+                                                                {% for parameter in parameterlist %}
+                                                                <option value="{{ parameter.parameterid }}"> {{ parameter.parameterid }} - {{ parameter.name }}
+                                                                </option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Add InputParameter
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form action="{% url 'delete_inputparameter' %}" method="POST">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                                        <div class="form-group">
+                                                            <h3 style="font-size:18px;">Webservice : Parameter</h3>
+                                                            <select name="inputparameter_delete" class="form-control"
+                                                                id="inputparameter_delete">
+
+                                                                {% for inputpara in inputparameterlist %}
+                                                                {{ inputpara.webserviceid.name }} {{ inputpara.parameterid.name }}
+                                                                <option value="{{ inputpara.0.webserviceid }}+{{ inputpara.1.parameterid }}">
+                                                                    {{ inputpara.webserviceid.name }} : {{ inputpara.parameterid.name }}
+                                                                </option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Delete InputParameter
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-main">
+                                        <table id="input_parameter_table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th class="th">WebService ID</th>
+                                                  <th class="th">Parameter ID</th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                {% for inputparameter in inputparameterlist %}
+                                                <tr>
+                                                  <td>{{inputparameter.webserviceid}}</td>
+                                                  <td>{{inputparameter.parameterid}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="out_parameter">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            <form action="" method="POST" id="demo1-upload">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <h3 style="font-size:18px;">Web Service</h3>
+                                                            <select name="post_course" class="form-control"
+                                                                name="del_course_id" id="del_knowledge_id">
+
+                                                                {% for webservice in webservicelist %}
+                                                                <option value="{{ webservice.webserviceid }}">{{ webservice.webserviceid }} - {{ webservice.name }}
+                                                                </option>
+                                                                {% endfor %}
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <h3 style="font-size:18px;">Parameter</h3>
+                                                            <select name="post_knowledge" class="form-control"
+                                                                name="del_course_id" id="del_knowledge_id">
+
+                                                                {% for parameter in parameterlist %}
+                                                                <option value="{{ parameter.parameterid }}"> {{ parameter.parameterid }} - {{ parameter.name }}
+                                                                </option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Add PostKnowledge
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form action="" method="POST">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                                        <div class="form-group">
+                                                            <h3 style="font-size:18px;">Web Service : Parameter</h3>
+                                                            <select name="postknowledge_delete" class="form-control"
+                                                                name="del_course_id" id="del_knowledge_id">
+
+                                                                {% for outputPar in outputparameterlist %}
+                                                                <option
+                                                                    value="{{ outputPar.0.webserviceid }}+{{ outputPar.1.parameterid }}">
+                                                                        {{ outputPar.webserviceid.name }} : {{ outputPar.parameterid.name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-buttons-main">
+                                                    <div class="payment-adress">
+                                                        <button type="submit"
+                                                            class="btn btn-primary waves-effect waves-light">
+                                                            Delete Postknowledge
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-main">
+                                        <table id="out_parameter_table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th class="th">WebService ID</th>
+                                                  <th class="th">Parameter ID</th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                {% for outputparameter in outputparameterlist %}
+                                                <tr>
+                                                  <td>{{outputparameter.webserviceid}}</td>
+                                                  <td>{{outputparameter.parameterid}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-tab-list tab-pane fade" id="hierarchy">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <div id="dropzone1" class="pro-ad addcoursepro">
+                                            <form action="{% url 'add_parameterhierarchy' %}" method="POST" id="demo1-upload">
+                                                {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group">
+                                                            <label>Parent Parameter ID</label>
+                                                            <select class="form-control" name="parentParameterID" id="parentParameterID">
+                                                                {% for PP in parent_parameters %}
+                                                                <option value="{{ PP }}">{{PP}}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <label>Child Parameter ID</label>
+                                                            <select class="form-control" name="childParameterID" id="childParameterID">
+                                                                {% for CP in child_parameters %}
+                                                                <option value="{{ CP }}">{{CP}}</option>
+                                                                {% endfor %} 
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <label>No of Depth:</label>
+                                                            <select class="form-control" name="noOfDepth" id="noOfDepth">
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option> 
+                                                                <option value="3">3</option> 
+                                                                <option value="4">4</option> 
+                                                            </select>
+                                                        </div>  
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="form-group res-mg-t-15">
+                                                            <label>No of Childern:</label>
+                                                            <select class="form-control" name="noOfChildren" id="noOfChildren">
+                                                               <option value="1">1</option>
+                                                               <option value="2">2</option> 
+                                                               <option value="3">3</option> 
+                                                               <option value="4">4</option> 
+                                                               <option value="5">5</option>    
+                                                            </select>
+                                                        </div>  
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="payment-adress">
+                                                            <button type="submit"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Add Hierarchy
+                                                            </button>
+                                                            <a href="{% url 'org_chart' %}"
+                                                                class="btn btn-primary waves-effect waves-light">
+                                                                Show Hierarchy Chart
+                                                            </a>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="table-main">
+                                        <table id="hierarchy_table" class="table table-striped table-bordered">
+                                            <thead>
+                                                <tr>
+                                                  <th class="th">ID</th>
+                                                  <th class="th">ParentParameter ID</th>
+                                                  <th>ChildParameter ID</th>
+                                                  <th>No of Depth</th>
+                                                  <th class="th1">No of Childern</th>
+                                                </tr>
+                                            </thead>
+                                                <tbody>
+                                                {% for parhierarchy in parameterhierarchy_list %}
+                                                <tr>
+                                                  <td>{{parhierarchy.id}}</td>
+                                                  <td>{{parhierarchy.parentParameterID}}</td>
+                                                  <td>{{parhierarchy.childParameterID}}</td>
+                                                  <td>{{parhierarchy.noOfDepth}}</td>
+                                                  <td>{{parhierarchy.noOfChildren}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                      </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap.min.js"></script>
+<script>
+    $(document).ready(function() {
+        new DataTable('#web_service_table');
+    } );
+    $(document).ready(function() {
+        new DataTable('#parameter_table');
+    } );
+    $(document).ready(function() {
+        new DataTable('#input_parameter_table');
+    } );
+    $(document).ready(function() {
+        new DataTable('#out_parameter_table');
+    } );
+    $(document).ready(function() {
+        new DataTable('#hierarchy_table');
+    } );
+</script>
+<!-- Hi-chart list End-->
+<script>
+    $(document).ready(function() {
+      // Get the fragment identifier from the URL
+      var fragment = window.location.hash;
+  
+      // Activate the tab with the corresponding ID
+      if (fragment) {
+        // Remove the '#' symbol to match the tab ID
+        var tabId = fragment.substring(1);
+        $('#myTabedu1 a[href="#' + tabId + '"]').tab('show');
+      }
+    });
+  </script>
+
+{% endblock content %}
